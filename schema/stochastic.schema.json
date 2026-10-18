@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SJTU stochastic data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "reserve_fraction",
+    "scenarios"
+  ],
+  "properties": {
+    "reserve_fraction": {
+      "type": "number",
+      "minimum": 0
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "probability"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "probability": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 1
+          },
+          "load_factor": {
+            "type": "number",
+            "minimum": 0
+          },
+          "load": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "oneOf": [
+          {
+            "required": [
+              "load_factor"
+            ],
+            "not": {
+              "required": [
+                "load"
+              ]
+            }
+          },
+          {
+            "required": [
+              "load"
+            ],
+            "not": {
+              "required": [
+                "load_factor"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

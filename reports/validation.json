@@ -1,0 +1,37 @@
+{
+  "profile": "sjtu-hourly-uc/0.1.0",
+  "cases": [
+    {
+      "case_id": "orlib_10_0_4_w_quad_v1",
+      "json_schema": "passed",
+      "cross_field_checks": "passed",
+      "source_and_output_hashes": "passed",
+      "capacity_upper_screen": {
+        "status": "passed_necessary_condition_only",
+        "interpretation": "documented ordinary output ramp also applies during startup; no target code inspected",
+        "violations": [],
+        "feasibility_proven": false
+      },
+      "classification": "derived_model_changed",
+      "solve_status": "not_run",
+      "target_program_import": "not_tested",
+      "independent_solution_check": "not_run"
+    },
+    {
+      "case_id": "orlib_20_0_1_w_quad_v1",
+      "json_schema": "passed",
+      "cross_field_checks": "passed",
+      "source_and_output_hashes": "passed",
+      "capacity_upper_screen": {
+        "status": "passed_necessary_condition_only",
+        "interpretation": "documented ordinary output ramp also applies during startup; no target code inspected",
+        "violations": [],
+        "feasibility_proven": false
+      },
+      "classification": "derived_model_changed",
+      "solve_status": "not_run",
+      "target_program_import": "not_tested",
+      "independent_solution_check": "not_run"
+    }
+  ]
+}

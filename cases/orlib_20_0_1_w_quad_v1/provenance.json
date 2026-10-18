@@ -1,0 +1,1314 @@
+{
+  "case_id": "orlib_20_0_1_w_quad_v1",
+  "profile_version": "sjtu-hourly-uc/0.1.0",
+  "classification": "derived_model_changed",
+  "source_case": "or-lib/20_0_1_w",
+  "source_format_version": "0.3",
+  "source_files": [
+    {
+      "path": "../../sources/or-lib/20_0_1_w.json.gz",
+      "sha256": "6a567e0c8ebe5b2420d940f7526f343850fd45c6400e09ef1247cb450a6551be",
+      "official_url": "https://axavier.org/UnitCommitment.jl/0.4/instances/or-lib/20_0_1_w.json.gz",
+      "collected_at_utc": "2026-10-15T10:57:46.612140+00:00"
+    }
+  ],
+  "license": {
+    "identifier": "MIT",
+    "evidence": "Explicit LICENSE text embedded in each original JSON",
+    "full_notice": "../../sources/ORLIB_LICENSE.txt",
+    "scope": "These selected per-file licensed instances only"
+  },
+  "references": [
+    "J.E.Beasley. \"OR-Library: distributing test problems by electronic mail\", Journal of the Operational Research Society 41(11) (1990). DOI: 10.2307/2582903",
+    "A. Frangioni, C. Gentile. \"Solving nonlinear single-unit commitment problems with ramping constraints\" Operations Research 54(4), p. 767 - 775, 2006. DOI: 10.1287/opre.1060.0309"
+  ],
+  "unit_mapping": [
+    {
+      "array_index": 0,
+      "source_unit_id": "g0"
+    },
+    {
+      "array_index": 1,
+      "source_unit_id": "g1"
+    },
+    {
+      "array_index": 2,
+      "source_unit_id": "g2"
+    },
+    {
+      "array_index": 3,
+      "source_unit_id": "g3"
+    },
+    {
+      "array_index": 4,
+      "source_unit_id": "g4"
+    },
+    {
+      "array_index": 5,
+      "source_unit_id": "g5"
+    },
+    {
+      "array_index": 6,
+      "source_unit_id": "g6"
+    },
+    {
+      "array_index": 7,
+      "source_unit_id": "g7"
+    },
+    {
+      "array_index": 8,
+      "source_unit_id": "g8"
+    },
+    {
+      "array_index": 9,
+      "source_unit_id": "g9"
+    },
+    {
+      "array_index": 10,
+      "source_unit_id": "g10"
+    },
+    {
+      "array_index": 11,
+      "source_unit_id": "g11"
+    },
+    {
+      "array_index": 12,
+      "source_unit_id": "g12"
+    },
+    {
+      "array_index": 13,
+      "source_unit_id": "g13"
+    },
+    {
+      "array_index": 14,
+      "source_unit_id": "g14"
+    },
+    {
+      "array_index": 15,
+      "source_unit_id": "g15"
+    },
+    {
+      "array_index": 16,
+      "source_unit_id": "g16"
+    },
+    {
+      "array_index": 17,
+      "source_unit_id": "g17"
+    },
+    {
+      "array_index": 18,
+      "source_unit_id": "g18"
+    },
+    {
+      "array_index": 19,
+      "source_unit_id": "g19"
+    }
+  ],
+  "units": {
+    "power": "MW",
+    "time_step_hours": 1,
+    "currency": "source_$",
+    "currency_note": "Dollar label inherited unchanged; ISO currency and price year not independently established. No FX conversion.",
+    "cost_a": "source_$/(MW^2*h)",
+    "cost_b": "source_$/(MW*h)",
+    "cost_c": "source_$/h",
+    "startup_cost": "source_$/event",
+    "shutdown_cost": "source_$/event"
+  },
+  "field_mapping": {
+    "n_units": "count(Generators); preserve source object insertion order",
+    "horizon": "Parameters.Time (h)",
+    "base_load": "single Buses.*.Load (MW), no aggregation",
+    "pmin,pmax": "first and last Production cost curve (MW) knots",
+    "pstart,pshut": "pmax as effective finite bound; absent source startup/shutdown limits default to 1e6 in pinned reader",
+    "ramp_up,ramp_down": "Ramp up/down limit (MW), unchanged values; target startup semantics differ",
+    "min_up,min_down": "Minimum uptime/downtime (h), unchanged integers",
+    "initial_duration,initial_output": "Initial status (h), Initial power (MW), unchanged",
+    "cost_a,cost_b,cost_c": "quadratic interpolation through cost knots, report below; do not add a second no-load charge",
+    "startup_cost": "only Startup costs ($) entry",
+    "shutdown_cost": "explicit zero-charge target assumption; no source shutdown-cost field",
+    "reserve_fraction": "all original spinning-reserve MW entries exactly zero -> 0.0",
+    "scenarios": "single deterministic source -> one base scenario with probability 1"
+  },
+  "assumptions": [
+    "Absent shutdown charge is represented as 0, an explicit model assumption rather than a recovered historical cost.",
+    "pstart/pshut cap at pmax replaces absent/very large source limits within static output bounds; ordinary target ramps still apply.",
+    "Currency is retained as source dollar units, not silently converted into CNY or assigned a price year."
+  ],
+  "model_differences": [
+    "Source UC.jl cost is PWL between knots; target quadratic differs inside segments even when all knots match.",
+    "Target ordinary ramps also apply to startup/shutdown; source has separate startup/shutdown treatment.",
+    "Target prohibits shutdown in last hour and truncates terminal min-up/down constraints; source equivalence not certified.",
+    "Pinned source reader permits power imbalance at default penalty 1000; target interface has no imbalance penalty input.",
+    "No target model code was supplied; physical feasibility and solver compatibility remain unverified."
+  ],
+  "unsupported_source_constraints": [],
+  "missing_source_fields": [
+    "Startup limit (MW)",
+    "Shutdown limit (MW)",
+    "shutdown cost"
+  ],
+  "cost_conversion": [
+    {
+      "source_unit_id": "g0",
+      "coefficients": {
+        "cost_a": 0.020717000000000072,
+        "cost_b": 40.159700999999984,
+        "cost_c": 1337.6585960000007
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 9.094947017729282e-13,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 2.7398232500008817,
+      "segment_deviations": [
+        {
+          "left_mw": 33.0,
+          "right_mw": 56.0,
+          "max_abs_cost_delta_per_hour": 2.739823249999972,
+          "at_mw": 44.50000000000012,
+          "target_minus_source_at_max": -2.739823249999972
+        },
+        {
+          "left_mw": 56.0,
+          "right_mw": 79.0,
+          "max_abs_cost_delta_per_hour": 2.739823249999972,
+          "at_mw": 67.49999999999984,
+          "target_minus_source_at_max": -2.739823249999972
+        },
+        {
+          "left_mw": 79.0,
+          "right_mw": 102.0,
+          "max_abs_cost_delta_per_hour": 2.7398232499990627,
+          "at_mw": 90.50000000000041,
+          "target_minus_source_at_max": -2.7398232499990627
+        },
+        {
+          "left_mw": 102.0,
+          "right_mw": 125.0,
+          "max_abs_cost_delta_per_hour": 2.7398232500008817,
+          "at_mw": 113.50000000000013,
+          "target_minus_source_at_max": -2.7398232500008817
+        }
+      ],
+      "source_mw_knots": [
+        33.0,
+        56.0,
+        79.0,
+        102.0,
+        125.0
+      ],
+      "source_cost_knots": [
+        2685.4895420000003,
+        3651.570364,
+        4639.569772,
+        5649.487766,
+        6681.324346
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g1",
+      "coefficients": {
+        "cost_a": 0.01354299999999927,
+        "cost_b": 47.94064300000012,
+        "cost_c": 1606.413610999996
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 1.8189894035458565e-12,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 1.1587729374996343,
+      "segment_deviations": [
+        {
+          "left_mw": 46.0,
+          "right_mw": 64.5,
+          "max_abs_cost_delta_per_hour": 1.1587729374996343,
+          "at_mw": 55.24999999999855,
+          "target_minus_source_at_max": -1.1587729374996343
+        },
+        {
+          "left_mw": 64.5,
+          "right_mw": 83.0,
+          "max_abs_cost_delta_per_hour": 1.1587729374987248,
+          "at_mw": 73.75000000000095,
+          "target_minus_source_at_max": -1.1587729374987248
+        },
+        {
+          "left_mw": 83.0,
+          "right_mw": 101.5,
+          "max_abs_cost_delta_per_hour": 1.1587729374987248,
+          "at_mw": 92.24999999999784,
+          "target_minus_source_at_max": -1.1587729374987248
+        },
+        {
+          "left_mw": 101.5,
+          "right_mw": 120.0,
+          "max_abs_cost_delta_per_hour": 1.1587729374987248,
+          "at_mw": 110.75000000000207,
+          "target_minus_source_at_max": -1.1587729374987248
+        }
+      ],
+      "source_mw_knots": [
+        46.0,
+        64.5,
+        83.0,
+        101.5,
+        120.0
+      ],
+      "source_cost_knots": [
+        3840.340177,
+        4754.92735025,
+        5678.784707000001,
+        6611.912247249999,
+        7554.309971
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g2",
+      "coefficients": {
+        "cost_a": 0.04899300000000013,
+        "cost_b": 47.50233899999998,
+        "cost_c": 1423.000475000001
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 9.094947017729282e-13,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 3.6446198906251084,
+      "segment_deviations": [
+        {
+          "left_mw": 37.0,
+          "right_mw": 54.25,
+          "max_abs_cost_delta_per_hour": 3.6446198906251084,
+          "at_mw": 45.62499999999993,
+          "target_minus_source_at_max": -3.6446198906251084
+        },
+        {
+          "left_mw": 54.25,
+          "right_mw": 71.5,
+          "max_abs_cost_delta_per_hour": 3.6446198906251084,
+          "at_mw": 62.87499999999987,
+          "target_minus_source_at_max": -3.6446198906251084
+        },
+        {
+          "left_mw": 71.5,
+          "right_mw": 88.75,
+          "max_abs_cost_delta_per_hour": 3.6446198906251084,
+          "at_mw": 80.12499999999982,
+          "target_minus_source_at_max": -3.6446198906251084
+        },
+        {
+          "left_mw": 88.75,
+          "right_mw": 106.0,
+          "max_abs_cost_delta_per_hour": 3.6446198906251084,
+          "at_mw": 97.37500000000027,
+          "target_minus_source_at_max": -3.6446198906251084
+        }
+      ],
+      "source_mw_knots": [
+        37.0,
+        54.25,
+        71.5,
+        88.75,
+        106.0
+      ],
+      "source_cost_knots": [
+        3247.6584350000003,
+        4144.1918268125,
+        5069.88217775,
+        6024.729487812499,
+        7008.733757
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g3",
+      "coefficients": {
+        "cost_a": 0.07745099999999995,
+        "cost_b": 36.62021100000001,
+        "cost_c": 1238.7513939999994
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 9.094947017729282e-13,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 8.743491796875333,
+      "segment_deviations": [
+        {
+          "left_mw": 32.0,
+          "right_mw": 53.25,
+          "max_abs_cost_delta_per_hour": 8.743491796875333,
+          "at_mw": 42.62500000000001,
+          "target_minus_source_at_max": -8.743491796875333
+        },
+        {
+          "left_mw": 53.25,
+          "right_mw": 74.5,
+          "max_abs_cost_delta_per_hour": 8.743491796874878,
+          "at_mw": 63.87499999999986,
+          "target_minus_source_at_max": -8.743491796874878
+        },
+        {
+          "left_mw": 74.5,
+          "right_mw": 95.75,
+          "max_abs_cost_delta_per_hour": 8.743491796873968,
+          "at_mw": 85.12499999999999,
+          "target_minus_source_at_max": -8.743491796873968
+        },
+        {
+          "left_mw": 95.75,
+          "right_mw": 117.0,
+          "max_abs_cost_delta_per_hour": 8.743491796873968,
+          "at_mw": 106.37500000000001,
+          "target_minus_source_at_max": -8.743491796873968
+        }
+      ],
+      "source_mw_knots": [
+        32.0,
+        53.25,
+        74.5,
+        95.75,
+        117.0
+      ],
+      "source_cost_knots": [
+        2489.9079699999998,
+        3408.3947809375,
+        4396.82952625,
+        5455.2122059375,
+        6583.54282
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g4",
+      "coefficients": {
+        "cost_a": 0.056215,
+        "cost_b": 44.78441,
+        "cost_c": 1583.627818
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 0.0,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 2.3750837500010675,
+      "segment_deviations": [
+        {
+          "left_mw": 49.0,
+          "right_mw": 62.0,
+          "max_abs_cost_delta_per_hour": 2.375083750000158,
+          "at_mw": 55.500000000000334,
+          "target_minus_source_at_max": -2.375083750000158
+        },
+        {
+          "left_mw": 62.0,
+          "right_mw": 75.0,
+          "max_abs_cost_delta_per_hour": 2.3750837499992485,
+          "at_mw": 68.49999999999996,
+          "target_minus_source_at_max": -2.3750837499992485
+        },
+        {
+          "left_mw": 75.0,
+          "right_mw": 88.0,
+          "max_abs_cost_delta_per_hour": 2.3750837500010675,
+          "at_mw": 81.49999999999959,
+          "target_minus_source_at_max": -2.3750837500010675
+        },
+        {
+          "left_mw": 88.0,
+          "right_mw": 101.0,
+          "max_abs_cost_delta_per_hour": 2.3750837499992485,
+          "at_mw": 94.49999999999986,
+          "target_minus_source_at_max": -2.3750837499992485
+        }
+      ],
+      "source_mw_knots": [
+        49.0,
+        62.0,
+        75.0,
+        88.0,
+        101.0
+      ],
+      "source_cost_knots": [
+        3913.036123,
+        4576.351698,
+        5258.667943,
+        5959.984858,
+        6680.302443
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g5",
+      "coefficients": {
+        "cost_a": 0.022816,
+        "cost_b": 44.540744,
+        "cost_c": 1251.224742
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 0.0,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 1.6003285000006144,
+      "segment_deviations": [
+        {
+          "left_mw": 37.0,
+          "right_mw": 53.75,
+          "max_abs_cost_delta_per_hour": 1.600328499999705,
+          "at_mw": 45.374999999999986,
+          "target_minus_source_at_max": -1.600328499999705
+        },
+        {
+          "left_mw": 53.75,
+          "right_mw": 70.5,
+          "max_abs_cost_delta_per_hour": 1.6003285000006144,
+          "at_mw": 62.125000000000455,
+          "target_minus_source_at_max": -1.6003285000006144
+        },
+        {
+          "left_mw": 70.5,
+          "right_mw": 87.25,
+          "max_abs_cost_delta_per_hour": 1.600328499999705,
+          "at_mw": 78.87499999999983,
+          "target_minus_source_at_max": -1.600328499999705
+        },
+        {
+          "left_mw": 87.25,
+          "right_mw": 104.0,
+          "max_abs_cost_delta_per_hour": 1.600328499999705,
+          "at_mw": 95.62500000000031,
+          "target_minus_source_at_max": -1.600328499999705
+        }
+      ],
+      "source_mw_knots": [
+        37.0,
+        53.75,
+        70.5,
+        87.25,
+        104.0
+      ],
+      "source_cost_knots": [
+        2930.467374,
+        3711.206582,
+        4504.748418,
+        5311.092882,
+        6130.239974
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g6",
+      "coefficients": {
+        "cost_a": 0.038801,
+        "cost_b": 47.057446,
+        "cost_c": 1478.774181
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 0.0,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 4.802230015625355,
+      "segment_deviations": [
+        {
+          "left_mw": 31.0,
+          "right_mw": 53.25,
+          "max_abs_cost_delta_per_hour": 4.802230015625355,
+          "at_mw": 42.12500000000003,
+          "target_minus_source_at_max": -4.802230015625355
+        },
+        {
+          "left_mw": 53.25,
+          "right_mw": 75.5,
+          "max_abs_cost_delta_per_hour": 4.802230015625355,
+          "at_mw": 64.37499999999983,
+          "target_minus_source_at_max": -4.802230015625355
+        },
+        {
+          "left_mw": 75.5,
+          "right_mw": 97.75,
+          "max_abs_cost_delta_per_hour": 4.802230015625355,
+          "at_mw": 86.62499999999991,
+          "target_minus_source_at_max": -4.802230015625355
+        },
+        {
+          "left_mw": 97.75,
+          "right_mw": 120.0,
+          "max_abs_cost_delta_per_hour": 4.8022300156244455,
+          "at_mw": 108.87499999999999,
+          "target_minus_source_at_max": -4.8022300156244455
+        }
+      ],
+      "source_mw_knots": [
+        31.0,
+        53.25,
+        75.5,
+        97.75,
+        120.0
+      ],
+      "source_cost_knots": [
+        2974.842768,
+        4094.6058410625,
+        5252.78675425,
+        6449.3855075625,
+        7684.402101
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g7",
+      "coefficients": {
+        "cost_a": 0.026371999999999507,
+        "cost_b": 43.97272000000008,
+        "cost_c": 1466.3255399999978
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 1.8189894035458565e-12,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 3.3377062500003376,
+      "segment_deviations": [
+        {
+          "left_mw": 35.0,
+          "right_mw": 57.5,
+          "max_abs_cost_delta_per_hour": 3.3377062500003376,
+          "at_mw": 46.24999999999956,
+          "target_minus_source_at_max": -3.3377062500003376
+        },
+        {
+          "left_mw": 57.5,
+          "right_mw": 80.0,
+          "max_abs_cost_delta_per_hour": 3.3377062499985186,
+          "at_mw": 68.74999999999986,
+          "target_minus_source_at_max": -3.3377062499985186
+        },
+        {
+          "left_mw": 80.0,
+          "right_mw": 102.5,
+          "max_abs_cost_delta_per_hour": 3.337706249999428,
+          "at_mw": 91.2499999999996,
+          "target_minus_source_at_max": -3.337706249999428
+        },
+        {
+          "left_mw": 102.5,
+          "right_mw": 125.0,
+          "max_abs_cost_delta_per_hour": 3.3377062499985186,
+          "at_mw": 113.75000000000071,
+          "target_minus_source_at_max": -3.3377062499985186
+        }
+      ],
+      "source_mw_knots": [
+        35.0,
+        57.5,
+        80.0,
+        102.5,
+        125.0
+      ],
+      "source_cost_knots": [
+        3037.67644,
+        4081.9493650000004,
+        5152.923940000001,
+        6250.600165,
+        7374.97804
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g8",
+      "coefficients": {
+        "cost_a": 0.081146,
+        "cost_b": 42.671626,
+        "cost_c": 1494.90185
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 0.0,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 9.377434625000205,
+      "segment_deviations": [
+        {
+          "left_mw": 32.0,
+          "right_mw": 53.5,
+          "max_abs_cost_delta_per_hour": 9.37743462499975,
+          "at_mw": 42.75000000000015,
+          "target_minus_source_at_max": -9.37743462499975
+        },
+        {
+          "left_mw": 53.5,
+          "right_mw": 75.0,
+          "max_abs_cost_delta_per_hour": 9.377434624999296,
+          "at_mw": 64.24999999999984,
+          "target_minus_source_at_max": -9.377434624999296
+        },
+        {
+          "left_mw": 75.0,
+          "right_mw": 96.5,
+          "max_abs_cost_delta_per_hour": 9.377434625000205,
+          "at_mw": 85.75000000000004,
+          "target_minus_source_at_max": -9.377434625000205
+        },
+        {
+          "left_mw": 96.5,
+          "right_mw": 118.0,
+          "max_abs_cost_delta_per_hour": 9.377434624999296,
+          "at_mw": 107.25,
+          "target_minus_source_at_max": -9.377434624999296
+        }
+      ],
+      "source_mw_knots": [
+        32.0,
+        53.5,
+        75.0,
+        96.5,
+        118.0
+      ],
+      "source_cost_knots": [
+        2943.487386,
+        4010.0939795000004,
+        5151.72005,
+        6368.3655975,
+        7660.030622
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g9",
+      "coefficients": {
+        "cost_a": 0.011065,
+        "cost_b": 42.188496,
+        "cost_c": 1647.915526
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 0.0,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 0.8471640625002692,
+      "segment_deviations": [
+        {
+          "left_mw": 47.0,
+          "right_mw": 64.5,
+          "max_abs_cost_delta_per_hour": 0.8471640624998145,
+          "at_mw": 55.74999999999839,
+          "target_minus_source_at_max": -0.8471640624998145
+        },
+        {
+          "left_mw": 64.5,
+          "right_mw": 82.0,
+          "max_abs_cost_delta_per_hour": 0.8471640624993597,
+          "at_mw": 73.2500000000017,
+          "target_minus_source_at_max": -0.8471640624993597
+        },
+        {
+          "left_mw": 82.0,
+          "right_mw": 99.5,
+          "max_abs_cost_delta_per_hour": 0.8471640625002692,
+          "at_mw": 90.75000000000021,
+          "target_minus_source_at_max": -0.8471640625002692
+        },
+        {
+          "left_mw": 99.5,
+          "right_mw": 117.0,
+          "max_abs_cost_delta_per_hour": 0.8471640624993597,
+          "at_mw": 108.24999999999872,
+          "target_minus_source_at_max": -0.8471640624993597
+        }
+      ],
+      "source_mw_knots": [
+        47.0,
+        64.5,
+        82.0,
+        99.5,
+        117.0
+      ],
+      "source_cost_knots": [
+        3655.217423,
+        4415.1066842499995,
+        5181.773258,
+        5955.21714425,
+        6735.438343
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g10",
+      "coefficients": {
+        "cost_a": 0.008058,
+        "cost_b": 58.852874,
+        "cost_c": 1906.809572
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 0.0,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 2.2607726250007545,
+      "segment_deviations": [
+        {
+          "left_mw": 64.0,
+          "right_mw": 97.5,
+          "max_abs_cost_delta_per_hour": 2.260772624999845,
+          "at_mw": 80.7499999999995,
+          "target_minus_source_at_max": -2.260772624999845
+        },
+        {
+          "left_mw": 97.5,
+          "right_mw": 131.0,
+          "max_abs_cost_delta_per_hour": 2.2607726250007545,
+          "at_mw": 114.25000000000057,
+          "target_minus_source_at_max": -2.2607726250007545
+        },
+        {
+          "left_mw": 131.0,
+          "right_mw": 164.5,
+          "max_abs_cost_delta_per_hour": 2.2607726249989355,
+          "at_mw": 147.75000000000028,
+          "target_minus_source_at_max": -2.2607726249989355
+        },
+        {
+          "left_mw": 164.5,
+          "right_mw": 198.0,
+          "max_abs_cost_delta_per_hour": 2.2607726249989355,
+          "at_mw": 181.25000000000136,
+          "target_minus_source_at_max": -2.2607726249989355
+        }
+      ],
+      "source_mw_knots": [
+        64.0,
+        97.5,
+        131.0,
+        164.5,
+        198.0
+      ],
+      "source_cost_knots": [
+        5706.399076,
+        7721.5661494999995,
+        9754.819404,
+        11806.1588395,
+        13875.584456
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g11",
+      "coefficients": {
+        "cost_a": 0.00767,
+        "cost_b": 56.557816,
+        "cost_c": 2709.771735
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 0.0,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 1.3720910937499866,
+      "segment_deviations": [
+        {
+          "left_mw": 67.0,
+          "right_mw": 93.75,
+          "max_abs_cost_delta_per_hour": 1.3720910937499866,
+          "at_mw": 80.37499999999882,
+          "target_minus_source_at_max": -1.3720910937499866
+        },
+        {
+          "left_mw": 93.75,
+          "right_mw": 120.5,
+          "max_abs_cost_delta_per_hour": 1.3720910937499866,
+          "at_mw": 107.12500000000111,
+          "target_minus_source_at_max": -1.3720910937499866
+        },
+        {
+          "left_mw": 120.5,
+          "right_mw": 147.25,
+          "max_abs_cost_delta_per_hour": 1.3720910937499866,
+          "at_mw": 133.87500000000063,
+          "target_minus_source_at_max": -1.3720910937499866
+        },
+        {
+          "left_mw": 147.25,
+          "right_mw": 174.0,
+          "max_abs_cost_delta_per_hour": 1.3720910937499866,
+          "at_mw": 160.6250000000006,
+          "target_minus_source_at_max": -1.3720910937499866
+        }
+      ],
+      "source_mw_knots": [
+        67.0,
+        93.75,
+        120.5,
+        147.25,
+        174.0
+      ],
+      "source_cost_knots": [
+        6533.576037,
+        8079.4790943749995,
+        9636.3588805,
+        11204.215395375,
+        12783.048639
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g12",
+      "coefficients": {
+        "cost_a": 0.007771,
+        "cost_b": 57.887331,
+        "cost_c": 2294.412616
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 0.0,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 1.9893760000013572,
+      "segment_deviations": [
+        {
+          "left_mw": 51.0,
+          "right_mw": 83.0,
+          "max_abs_cost_delta_per_hour": 1.9893759999995382,
+          "at_mw": 67.00000000000091,
+          "target_minus_source_at_max": -1.9893759999995382
+        },
+        {
+          "left_mw": 83.0,
+          "right_mw": 115.0,
+          "max_abs_cost_delta_per_hour": 1.9893760000004477,
+          "at_mw": 99.0000000000008,
+          "target_minus_source_at_max": -1.9893760000004477
+        },
+        {
+          "left_mw": 115.0,
+          "right_mw": 147.0,
+          "max_abs_cost_delta_per_hour": 1.9893760000013572,
+          "at_mw": 130.99999999999702,
+          "target_minus_source_at_max": -1.9893760000013572
+        },
+        {
+          "left_mw": 147.0,
+          "right_mw": 179.0,
+          "max_abs_cost_delta_per_hour": 1.9893759999995382,
+          "at_mw": 163.00000000000057,
+          "target_minus_source_at_max": -1.9893759999995382
+        }
+      ],
+      "source_mw_knots": [
+        51.0,
+        83.0,
+        115.0,
+        147.0,
+        179.0
+      ],
+      "source_cost_knots": [
+        5266.878868,
+        7152.595508,
+        9054.227156,
+        10971.773812,
+        12905.235476
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g13",
+      "coefficients": {
+        "cost_a": 0.007886,
+        "cost_b": 60.667137,
+        "cost_c": 2526.650674
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 0.0,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 2.7355794687509842,
+      "segment_deviations": [
+        {
+          "left_mw": 65.0,
+          "right_mw": 102.25,
+          "max_abs_cost_delta_per_hour": 2.7355794687509842,
+          "at_mw": 83.62499999999955,
+          "target_minus_source_at_max": -2.7355794687509842
+        },
+        {
+          "left_mw": 102.25,
+          "right_mw": 139.5,
+          "max_abs_cost_delta_per_hour": 2.7355794687500747,
+          "at_mw": 120.87500000000058,
+          "target_minus_source_at_max": -2.7355794687500747
+        },
+        {
+          "left_mw": 139.5,
+          "right_mw": 176.75,
+          "max_abs_cost_delta_per_hour": 2.7355794687500747,
+          "at_mw": 158.12500000000162,
+          "target_minus_source_at_max": -2.7355794687500747
+        },
+        {
+          "left_mw": 176.75,
+          "right_mw": 214.0,
+          "max_abs_cost_delta_per_hour": 2.7355794687500747,
+          "at_mw": 195.37499999999952,
+          "target_minus_source_at_max": -2.7355794687500747
+        }
+      ],
+      "source_mw_knots": [
+        65.0,
+        102.25,
+        139.5,
+        176.75,
+        214.0
+      ],
+      "source_cost_knots": [
+        6503.332929,
+        8812.314055125,
+        11143.179817,
+        13495.930214625001,
+        15870.565248
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g14",
+      "coefficients": {
+        "cost_a": 0.00744999999999961,
+        "cost_b": 57.308867000000085,
+        "cost_c": 2622.5185099999953
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 9.094947017729282e-13,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 1.7898624999997992,
+      "segment_deviations": [
+        {
+          "left_mw": 59.0,
+          "right_mw": 90.0,
+          "max_abs_cost_delta_per_hour": 1.7898624999997992,
+          "at_mw": 74.49999999999969,
+          "target_minus_source_at_max": -1.7898624999997992
+        },
+        {
+          "left_mw": 90.0,
+          "right_mw": 121.0,
+          "max_abs_cost_delta_per_hour": 1.7898624999997992,
+          "at_mw": 105.49999999999797,
+          "target_minus_source_at_max": -1.7898624999997992
+        },
+        {
+          "left_mw": 121.0,
+          "right_mw": 152.0,
+          "max_abs_cost_delta_per_hour": 1.7898624999997992,
+          "at_mw": 136.500000000002,
+          "target_minus_source_at_max": -1.7898624999997992
+        },
+        {
+          "left_mw": 152.0,
+          "right_mw": 183.0,
+          "max_abs_cost_delta_per_hour": 1.7898624999979802,
+          "at_mw": 167.50000000000026,
+          "target_minus_source_at_max": -1.7898624999979802
+        }
+      ],
+      "source_mw_knots": [
+        59.0,
+        90.0,
+        121.0,
+        152.0,
+        183.0
+      ],
+      "source_cost_knots": [
+        6029.675112999999,
+        7840.66154,
+        9665.966867,
+        11505.591094,
+        13359.534220999998
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g15",
+      "coefficients": {
+        "cost_a": 0.008408,
+        "cost_b": 65.361067,
+        "cost_c": 2907.456123
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 0.0,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 1.9234613749995333,
+      "segment_deviations": [
+        {
+          "left_mw": 60.0,
+          "right_mw": 90.25,
+          "max_abs_cost_delta_per_hour": 1.9234613749995333,
+          "at_mw": 75.12500000000145,
+          "target_minus_source_at_max": -1.9234613749995333
+        },
+        {
+          "left_mw": 90.25,
+          "right_mw": 120.5,
+          "max_abs_cost_delta_per_hour": 1.9234613749995333,
+          "at_mw": 105.3749999999982,
+          "target_minus_source_at_max": -1.9234613749995333
+        },
+        {
+          "left_mw": 120.5,
+          "right_mw": 150.75,
+          "max_abs_cost_delta_per_hour": 1.9234613749995333,
+          "at_mw": 135.62500000000088,
+          "target_minus_source_at_max": -1.9234613749995333
+        },
+        {
+          "left_mw": 150.75,
+          "right_mw": 181.0,
+          "max_abs_cost_delta_per_hour": 1.9234613749995333,
+          "at_mw": 165.87499999999764,
+          "target_minus_source_at_max": -1.9234613749995333
+        }
+      ],
+      "source_mw_knots": [
+        60.0,
+        90.25,
+        120.5,
+        150.75,
+        181.0
+      ],
+      "source_cost_knots": [
+        6859.388943,
+        8874.776105250001,
+        10905.5509585,
+        12951.71350275,
+        15013.263738
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g16",
+      "coefficients": {
+        "cost_a": 0.008012999999999671,
+        "cost_b": 64.47636100000008,
+        "cost_c": 2733.822026999997
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 1.8189894035458565e-12,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 2.668829812499098,
+      "segment_deviations": [
+        {
+          "left_mw": 56.0,
+          "right_mw": 92.5,
+          "max_abs_cost_delta_per_hour": 2.668829812499098,
+          "at_mw": 74.249999999997,
+          "target_minus_source_at_max": -2.668829812499098
+        },
+        {
+          "left_mw": 92.5,
+          "right_mw": 129.0,
+          "max_abs_cost_delta_per_hour": 2.668829812499098,
+          "at_mw": 110.7500000000017,
+          "target_minus_source_at_max": -2.668829812499098
+        },
+        {
+          "left_mw": 129.0,
+          "right_mw": 165.5,
+          "max_abs_cost_delta_per_hour": 2.668829812499098,
+          "at_mw": 147.24999999999756,
+          "target_minus_source_at_max": -2.668829812499098
+        },
+        {
+          "left_mw": 165.5,
+          "right_mw": 202.0,
+          "max_abs_cost_delta_per_hour": 2.668829812499098,
+          "at_mw": 183.75000000000225,
+          "target_minus_source_at_max": -2.668829812499098
+        }
+      ],
+      "source_mw_knots": [
+        56.0,
+        92.5,
+        129.0,
+        165.5,
+        202.0
+      ],
+      "source_cost_knots": [
+        6369.6270110000005,
+        8766.44665075,
+        11184.616929000002,
+        13624.13784575,
+        16085.009401
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g17",
+      "coefficients": {
+        "cost_a": 0.005440000000000032,
+        "cost_b": 54.777858,
+        "cost_c": 3844.413939
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 9.094947017729282e-13,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 5.440764999999374,
+      "segment_deviations": [
+        {
+          "left_mw": 73.0,
+          "right_mw": 136.25,
+          "max_abs_cost_delta_per_hour": 5.440764999999374,
+          "at_mw": 104.62500000000007,
+          "target_minus_source_at_max": -5.440764999999374
+        },
+        {
+          "left_mw": 136.25,
+          "right_mw": 199.5,
+          "max_abs_cost_delta_per_hour": 5.440764999999374,
+          "at_mw": 167.875,
+          "target_minus_source_at_max": -5.440764999999374
+        },
+        {
+          "left_mw": 199.5,
+          "right_mw": 262.75,
+          "max_abs_cost_delta_per_hour": 5.440764999999374,
+          "at_mw": 231.12500000000063,
+          "target_minus_source_at_max": -5.440764999999374
+        },
+        {
+          "left_mw": 262.75,
+          "right_mw": 326.0,
+          "max_abs_cost_delta_per_hour": 5.440764999999374,
+          "at_mw": 294.37499999999795,
+          "target_minus_source_at_max": -5.440764999999374
+        }
+      ],
+      "source_mw_knots": [
+        73.0,
+        136.25,
+        199.5,
+        262.75,
+        326.0
+      ],
+      "source_cost_knots": [
+        7872.187333,
+        11408.8855915,
+        14989.109970000001,
+        18612.860468500003,
+        22280.137087000003
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g18",
+      "coefficients": {
+        "cost_a": 0.005851,
+        "cost_b": 51.241117,
+        "cost_c": 3030.748255
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 0.0,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 4.836217187501461,
+      "segment_deviations": [
+        {
+          "left_mw": 78.0,
+          "right_mw": 135.5,
+          "max_abs_cost_delta_per_hour": 4.836217187499642,
+          "at_mw": 106.75000000000203,
+          "target_minus_source_at_max": -4.836217187499642
+        },
+        {
+          "left_mw": 135.5,
+          "right_mw": 193.0,
+          "max_abs_cost_delta_per_hour": 4.836217187501461,
+          "at_mw": 164.24999999999793,
+          "target_minus_source_at_max": -4.836217187501461
+        },
+        {
+          "left_mw": 193.0,
+          "right_mw": 250.5,
+          "max_abs_cost_delta_per_hour": 4.836217187499642,
+          "at_mw": 221.74999999999926,
+          "target_minus_source_at_max": -4.836217187499642
+        },
+        {
+          "left_mw": 250.5,
+          "right_mw": 308.0,
+          "max_abs_cost_delta_per_hour": 4.836217187501461,
+          "at_mw": 279.25,
+          "target_minus_source_at_max": -4.836217187501461
+        }
+      ],
+      "source_mw_knots": [
+        78.0,
+        135.5,
+        193.0,
+        250.5,
+        308.0
+      ],
+      "source_cost_knots": [
+        7063.152865,
+        10081.345431250002,
+        13138.227735,
+        16233.79977625,
+        19368.061555
+      ],
+      "equivalent_to_source_pwl": false
+    },
+    {
+      "source_unit_id": "g19",
+      "coefficients": {
+        "cost_a": 0.002577,
+        "cost_b": 52.029814,
+        "cost_c": 3075.343742
+      },
+      "method": "Decimal 40-digit interpolation at first, middle and last knots; verify every knot",
+      "knot_residual_max": 0.0,
+      "knot_residual_acceptance": 1e-07,
+      "max_abs_cost_delta_per_hour": 1.8612785156255995,
+      "segment_deviations": [
+        {
+          "left_mw": 81.0,
+          "right_mw": 134.75,
+          "max_abs_cost_delta_per_hour": 1.8612785156255995,
+          "at_mw": 107.87499999999861,
+          "target_minus_source_at_max": -1.8612785156255995
+        },
+        {
+          "left_mw": 134.75,
+          "right_mw": 188.5,
+          "max_abs_cost_delta_per_hour": 1.8612785156255995,
+          "at_mw": 161.62500000000188,
+          "target_minus_source_at_max": -1.8612785156255995
+        },
+        {
+          "left_mw": 188.5,
+          "right_mw": 242.25,
+          "max_abs_cost_delta_per_hour": 1.8612785156237805,
+          "at_mw": 215.37499999999275,
+          "target_minus_source_at_max": -1.8612785156237805
+        },
+        {
+          "left_mw": 242.25,
+          "right_mw": 296.0,
+          "max_abs_cost_delta_per_hour": 1.8612785156255995,
+          "at_mw": 269.1250000000112,
+          "target_minus_source_at_max": -1.8612785156255995
+        }
+      ],
+      "source_mw_knots": [
+        81.0,
+        134.75,
+        188.5,
+        242.25,
+        296.0
+      ],
+      "source_cost_knots": [
+        7306.666373,
+        10133.1532170625,
+        12974.53028925,
+        15830.797589562499,
+        18701.955118
+      ],
+      "equivalent_to_source_pwl": false
+    }
+  ],
+  "status": {
+    "format_checks": "see validation.json",
+    "solve_status": "not_run",
+    "target_program_import": "not_tested"
+  },
+  "target_rules": {
+    "last_hour_shutdown": "forbidden",
+    "terminal_min_up_down": "truncated",
+    "ordinary_ramps_during_transitions": true,
+    "commitment": "shared across all scenarios"
+  },
+  "converter": {
+    "version": "pilot-converter/0.1.0",
+    "path": "../../scripts/build_pilot.py",
+    "sha256": "e2ae7c7ea381dedf92d2a736843dbd8d45a069c234be8630a17a2dd4722cac49",
+    "profile_reference": "https://notes.sjtu.edu.cn/s/zzB-Iq_eRD"
+  },
+  "output_sha256": {
+    "units.json": "b19610d3ca4410b2ee18dc9997532633dcb12f8394483476972af9ae3aa1f7fe",
+    "stochastic.json": "5ddc1d4886e73e5415dbf9dde91787fd17a471c1b9e0fdb99597ec5939390c2f"
+  }
+}

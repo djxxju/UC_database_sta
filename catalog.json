@@ -1,0 +1,26 @@
+{
+  "profile": "sjtu-hourly-uc/0.1.0",
+  "case_count": 2,
+  "cases": [
+    {
+      "case_id": "orlib_10_0_4_w_quad_v1",
+      "source_case": "or-lib/10_0_4_w",
+      "n_units": 10,
+      "horizon": 24,
+      "classification": "derived_model_changed",
+      "path": "cases/orlib_10_0_4_w_quad_v1",
+      "max_cost_change_per_unit_hour": 6.67794375000085,
+      "solve_status": "not_run"
+    },
+    {
+      "case_id": "orlib_20_0_1_w_quad_v1",
+      "source_case": "or-lib/20_0_1_w",
+      "n_units": 20,
+      "horizon": 24,
+      "classification": "derived_model_changed",
+      "path": "cases/orlib_20_0_1_w_quad_v1",
+      "max_cost_change_per_unit_hour": 9.377434625000205,
+      "solve_status": "not_run"
+    }
+  ]
+}

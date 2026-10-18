@@ -1,0 +1,405 @@
+{
+  "policy": "Screen source OR-LIB cases of at most 20 units; select two passing candidates without changing data.",
+  "limitation": "Conditional on documented target startup-ramp interpretation; not an original-model infeasibility claim.",
+  "candidate_count": 10,
+  "cases": [
+    {
+      "source_case": "or-lib/10_0_1_w",
+      "sha256": "6ef95ef5a1966914306da848f2ffa4bd835c49d520e30b1dcbcfa948eee85cbe",
+      "n_units": 10,
+      "selected": false,
+      "screen": {
+        "status": "failed_necessary_condition",
+        "interpretation": "documented ordinary output ramp also applies during startup; no target code inspected",
+        "violations": [
+          {
+            "hour": 1,
+            "load": 953.170832,
+            "optimistic_upper_mw": 882.61111
+          }
+        ],
+        "feasibility_proven": false
+      },
+      "source_solve_status": "not_run",
+      "target_solve_status": "not_run"
+    },
+    {
+      "source_case": "or-lib/10_0_2_w",
+      "sha256": "ecc90e704cc0af09f83b43ccc1ebfa6f49f5ecb20392ee8d626748dbdfd33eee",
+      "n_units": 10,
+      "selected": false,
+      "screen": {
+        "status": "failed_necessary_condition",
+        "interpretation": "documented ordinary output ramp also applies during startup; no target code inspected",
+        "violations": [
+          {
+            "hour": 1,
+            "load": 694.272275,
+            "optimistic_upper_mw": 601.088566
+          },
+          {
+            "hour": 10,
+            "load": 1039.892991,
+            "optimistic_upper_mw": 1021.0
+          },
+          {
+            "hour": 11,
+            "load": 1045.118584,
+            "optimistic_upper_mw": 1021.0
+          },
+          {
+            "hour": 12,
+            "load": 1059.004029,
+            "optimistic_upper_mw": 1021.0
+          },
+          {
+            "hour": 13,
+            "load": 1040.520062,
+            "optimistic_upper_mw": 1021.0
+          }
+        ],
+        "feasibility_proven": false
+      },
+      "source_solve_status": "not_run",
+      "target_solve_status": "not_run"
+    },
+    {
+      "source_case": "or-lib/10_0_3_w",
+      "sha256": "400bcc50e60c1e104e863798feff922f85328bdea9336b1f889980e9f96800a7",
+      "n_units": 10,
+      "selected": false,
+      "screen": {
+        "status": "failed_necessary_condition",
+        "interpretation": "documented ordinary output ramp also applies during startup; no target code inspected",
+        "violations": [
+          {
+            "hour": 10,
+            "load": 1449.585522,
+            "optimistic_upper_mw": 1414.0
+          },
+          {
+            "hour": 11,
+            "load": 1456.869872,
+            "optimistic_upper_mw": 1414.0
+          },
+          {
+            "hour": 12,
+            "load": 1476.225845,
+            "optimistic_upper_mw": 1414.0
+          },
+          {
+            "hour": 13,
+            "load": 1450.459645,
+            "optimistic_upper_mw": 1414.0
+          }
+        ],
+        "feasibility_proven": false
+      },
+      "source_solve_status": "not_run",
+      "target_solve_status": "not_run"
+    },
+    {
+      "source_case": "or-lib/10_0_4_w",
+      "sha256": "287eb64692a84dbcd00de64fc2c6e3c2e39273d2a1ec1579e7c638e84c59631c",
+      "n_units": 10,
+      "selected": true,
+      "screen": {
+        "status": "passed_necessary_condition_only",
+        "interpretation": "documented ordinary output ramp also applies during startup; no target code inspected",
+        "violations": [],
+        "feasibility_proven": false
+      },
+      "source_solve_status": "not_run",
+      "target_solve_status": "not_run"
+    },
+    {
+      "source_case": "or-lib/10_0_5_w",
+      "sha256": "57cfb91664f8e694525e5b91fcf84179f10ea26dd43f265c1111958e639d5dc3",
+      "n_units": 10,
+      "selected": false,
+      "screen": {
+        "status": "failed_necessary_condition",
+        "interpretation": "documented ordinary output ramp also applies during startup; no target code inspected",
+        "violations": [
+          {
+            "hour": 9,
+            "load": 1382.330064,
+            "optimistic_upper_mw": 1347.0
+          },
+          {
+            "hour": 10,
+            "load": 1444.160451,
+            "optimistic_upper_mw": 1347.0
+          },
+          {
+            "hour": 11,
+            "load": 1451.417539,
+            "optimistic_upper_mw": 1347.0
+          },
+          {
+            "hour": 12,
+            "load": 1470.701072,
+            "optimistic_upper_mw": 1347.0
+          },
+          {
+            "hour": 13,
+            "load": 1445.031302,
+            "optimistic_upper_mw": 1347.0
+          },
+          {
+            "hour": 15,
+            "load": 1370.283298,
+            "optimistic_upper_mw": 1347.0
+          },
+          {
+            "hour": 16,
+            "load": 1381.894639,
+            "optimistic_upper_mw": 1347.0
+          },
+          {
+            "hour": 17,
+            "load": 1375.943827,
+            "optimistic_upper_mw": 1347.0
+          }
+        ],
+        "feasibility_proven": false
+      },
+      "source_solve_status": "not_run",
+      "target_solve_status": "not_run"
+    },
+    {
+      "source_case": "or-lib/20_0_1_w",
+      "sha256": "6a567e0c8ebe5b2420d940f7526f343850fd45c6400e09ef1247cb450a6551be",
+      "n_units": 20,
+      "selected": true,
+      "screen": {
+        "status": "passed_necessary_condition_only",
+        "interpretation": "documented ordinary output ramp also applies during startup; no target code inspected",
+        "violations": [],
+        "feasibility_proven": false
+      },
+      "source_solve_status": "not_run",
+      "target_solve_status": "not_run"
+    },
+    {
+      "source_case": "or-lib/20_0_2_w",
+      "sha256": "617b9406163e66287d00a0fbeeb57c66e6db51e5511006eb69948f8868685d08",
+      "n_units": 20,
+      "selected": false,
+      "screen": {
+        "status": "failed_necessary_condition",
+        "interpretation": "documented ordinary output ramp also applies during startup; no target code inspected",
+        "violations": [
+          {
+            "hour": 1,
+            "load": 1909.036792,
+            "optimistic_upper_mw": 1798.592099
+          },
+          {
+            "hour": 9,
+            "load": 2736.966191,
+            "optimistic_upper_mw": 2671.017833
+          },
+          {
+            "hour": 10,
+            "load": 2859.38824,
+            "optimistic_upper_mw": 2713.0
+          },
+          {
+            "hour": 11,
+            "load": 2873.757026,
+            "optimistic_upper_mw": 2713.0
+          },
+          {
+            "hour": 12,
+            "load": 2911.937762,
+            "optimistic_upper_mw": 2713.0
+          },
+          {
+            "hour": 13,
+            "load": 2861.112496,
+            "optimistic_upper_mw": 2713.0
+          },
+          {
+            "hour": 15,
+            "load": 2713.114008,
+            "optimistic_upper_mw": 2713.0
+          },
+          {
+            "hour": 16,
+            "load": 2736.104065,
+            "optimistic_upper_mw": 2713.0
+          },
+          {
+            "hour": 17,
+            "load": 2724.321661,
+            "optimistic_upper_mw": 2713.0
+          }
+        ],
+        "feasibility_proven": false
+      },
+      "source_solve_status": "not_run",
+      "target_solve_status": "not_run"
+    },
+    {
+      "source_case": "or-lib/20_0_3_w",
+      "sha256": "24c6c08d0aa625e46c8219eb819abba3225da8589c190973baa3253b8770dce2",
+      "n_units": 20,
+      "selected": false,
+      "screen": {
+        "status": "failed_necessary_condition",
+        "interpretation": "documented ordinary output ramp also applies during startup; no target code inspected",
+        "violations": [
+          {
+            "hour": 1,
+            "load": 1538.474571,
+            "optimistic_upper_mw": 1466.3699929999998
+          }
+        ],
+        "feasibility_proven": false
+      },
+      "source_solve_status": "not_run",
+      "target_solve_status": "not_run"
+    },
+    {
+      "source_case": "or-lib/20_0_4_w",
+      "sha256": "7419575aa5e1865a235f34ff3bc08bf7f6d20402860037848726d40468ad4574",
+      "n_units": 20,
+      "selected": false,
+      "screen": {
+        "status": "failed_necessary_condition",
+        "interpretation": "documented ordinary output ramp also applies during startup; no target code inspected",
+        "violations": [
+          {
+            "hour": 1,
+            "load": 1316.887564,
+            "optimistic_upper_mw": 1017.597374
+          },
+          {
+            "hour": 2,
+            "load": 1246.513473,
+            "optimistic_upper_mw": 1240.3503759999999
+          },
+          {
+            "hour": 11,
+            "load": 1982.368754,
+            "optimistic_upper_mw": 1980.0
+          },
+          {
+            "hour": 12,
+            "load": 2008.706506,
+            "optimistic_upper_mw": 1980.0
+          }
+        ],
+        "feasibility_proven": false
+      },
+      "source_solve_status": "not_run",
+      "target_solve_status": "not_run"
+    },
+    {
+      "source_case": "or-lib/20_0_5_w",
+      "sha256": "8750268cfc876ca71be9c5d5902cd64601a2eef26c66030ea99df07adf09b18f",
+      "n_units": 20,
+      "selected": false,
+      "screen": {
+        "status": "failed_necessary_condition",
+        "interpretation": "documented ordinary output ramp also applies during startup; no target code inspected",
+        "violations": [
+          {
+            "hour": 1,
+            "load": 1895.470937,
+            "optimistic_upper_mw": 1541.1304169999999
+          },
+          {
+            "hour": 2,
+            "load": 1794.177518,
+            "optimistic_upper_mw": 1749.1153239999999
+          },
+          {
+            "hour": 8,
+            "load": 2326.895302,
+            "optimistic_upper_mw": 2170.0
+          },
+          {
+            "hour": 9,
+            "load": 2717.516966,
+            "optimistic_upper_mw": 2170.0
+          },
+          {
+            "hour": 10,
+            "load": 2839.069069,
+            "optimistic_upper_mw": 2170.0
+          },
+          {
+            "hour": 11,
+            "load": 2853.335748,
+            "optimistic_upper_mw": 2170.0
+          },
+          {
+            "hour": 12,
+            "load": 2891.245166,
+            "optimistic_upper_mw": 2170.0
+          },
+          {
+            "hour": 13,
+            "load": 2840.781071,
+            "optimistic_upper_mw": 2170.0
+          },
+          {
+            "hour": 14,
+            "load": 2612.799544,
+            "optimistic_upper_mw": 2170.0
+          },
+          {
+            "hour": 15,
+            "load": 2693.834279,
+            "optimistic_upper_mw": 2170.0
+          },
+          {
+            "hour": 16,
+            "load": 2716.660966,
+            "optimistic_upper_mw": 2170.0
+          },
+          {
+            "hour": 17,
+            "load": 2704.96229,
+            "optimistic_upper_mw": 2170.0
+          },
+          {
+            "hour": 18,
+            "load": 2630.204893,
+            "optimistic_upper_mw": 2170.0
+          },
+          {
+            "hour": 19,
+            "load": 2526.914139,
+            "optimistic_upper_mw": 2170.0
+          },
+          {
+            "hour": 20,
+            "load": 2561.154166,
+            "optimistic_upper_mw": 2170.0
+          },
+          {
+            "hour": 21,
+            "load": 2632.202227,
+            "optimistic_upper_mw": 2170.0
+          },
+          {
+            "hour": 22,
+            "load": 2496.954113,
+            "optimistic_upper_mw": 2170.0
+          },
+          {
+            "hour": 23,
+            "load": 2270.11392,
+            "optimistic_upper_mw": 2170.0
+          }
+        ],
+        "feasibility_proven": false
+      },
+      "source_solve_status": "not_run",
+      "target_solve_status": "not_run"
+    }
+  ]
+}

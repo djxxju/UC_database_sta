@@ -1,0 +1,398 @@
+{
+  "checked_date": "2026-10-18",
+  "original_repository": "https://github.com/djxxju/UC_datas_codex",
+  "original_head_before": "0996262a618770ffdb089f2023e949094fba8756",
+  "original_head_at_audit": "e531876941a551236bb3dcb9512675fe2c564ba7",
+  "head_changed_during_pilot": true,
+  "head_change_note": "Concurrent batch08 collection commit observed outside this pilot's write operations. Check original data identities rather than assuming the entire repository head stays fixed.",
+  "original_raw_blob_count": 68,
+  "original_raw_blobs_changed_or_missing": [],
+  "existing_release_assets_unchanged": true,
+  "baseline_releases": [
+    {
+      "id": 415584822,
+      "tag": "official-data-2026-10-17-batch07",
+      "draft": false,
+      "assets": [
+        {
+          "id": 649546903,
+          "name": "Comillas-openSDUC-951369aa.zip",
+          "size": 439164,
+          "digest": "sha256:5f4cbf4d41d598e907f59b118f470d5e3b49e4566fd3328d7cd15c2b0fb32d8d",
+          "state": "uploaded"
+        },
+        {
+          "id": 649546907,
+          "name": "source_manifest.json",
+          "size": 6015,
+          "digest": "sha256:aab80fc61dbe3d49e40da0c22b360fdb18cb24b9bd3321a673802376690b4619",
+          "state": "uploaded"
+        },
+        {
+          "id": 649546908,
+          "name": "collection_receipt.json",
+          "size": 7568,
+          "digest": "sha256:d5871627f4c69a0eaa6b385e209a3f433a2327857783395d6e5759a44ac06bb1",
+          "state": "uploaded"
+        },
+        {
+          "id": 649546910,
+          "name": "ATTRIBUTION.md",
+          "size": 2143,
+          "digest": "sha256:bcaf1f79f9861508ee2b75a69aac83d12962fb039cd25936f27bae8eaaa43ee2",
+          "state": "uploaded"
+        },
+        {
+          "id": 649546915,
+          "name": "OPTIT-CHP-CHCP-UC-2024.zip",
+          "size": 455222,
+          "digest": "sha256:08e4e32499d9d920980a33778c09a37efd571ac7d7dd668be5122617f4285ef1",
+          "state": "uploaded"
+        }
+      ]
+    },
+    {
+      "id": 414498647,
+      "tag": "official-data-2026-10-16-batch06",
+      "draft": false,
+      "assets": [
+        {
+          "id": 645978730,
+          "name": "collection_receipt.json",
+          "size": 9257,
+          "digest": "sha256:f783cb21c078a637e0d9a51c49ed73f005a3c5c4b0325a5aa6e6688c0a340c72",
+          "state": "uploaded"
+        },
+        {
+          "id": 645978732,
+          "name": "ATTRIBUTION.md",
+          "size": 2989,
+          "digest": "sha256:06e4a1854e18b0fffc063c691acad360da39706ff4fb34d06d673b701af4c6a7",
+          "state": "uploaded"
+        },
+        {
+          "id": 645978734,
+          "name": "TU-Graz-LEGO-eb0cb5d4.zip",
+          "size": 60778171,
+          "digest": "sha256:c4363bf5da2464f3472052cc0073d51294e5633d8042a4031b39ef5bf7dc4875",
+          "state": "uploaded"
+        },
+        {
+          "id": 645978738,
+          "name": "JRC-Dispa-SET-EnVarClim-inputs-v1.zip",
+          "size": 151002846,
+          "digest": "sha256:26e36e8a62258548516ee19690f69cefb9ef11dfdeed831f8261866d09a556ec",
+          "state": "uploaded"
+        },
+        {
+          "id": 645978739,
+          "name": "Dispa-SET-sector-coupling-zenodo-v1.7z",
+          "size": 18326639,
+          "digest": "sha256:d71638e21bf27b9cdb77918dc52ddd9761f268e2923e6790b578f2a5a527355e",
+          "state": "uploaded"
+        },
+        {
+          "id": 645978755,
+          "name": "source_manifest.json",
+          "size": 7267,
+          "digest": "sha256:570a4a783dddc72b86459a25aa1fe1b2aec0cb0d135dde25b9242fda3c9fe63f",
+          "state": "uploaded"
+        }
+      ]
+    },
+    {
+      "id": 414483487,
+      "tag": "official-data-2026-10-16-batch05",
+      "draft": false,
+      "assets": [
+        {
+          "id": 645924631,
+          "name": "collection_receipt.json",
+          "size": 9921,
+          "digest": "sha256:f2647eb4f3546b233094d8c06cb5bf70cf5f1ddf27e079a0b0b603dfbbd4bfd2",
+          "state": "uploaded"
+        },
+        {
+          "id": 645924634,
+          "name": "HUST-hydropower-UC-PMC5996229-supplement.zip",
+          "size": 1016404,
+          "digest": "sha256:1690957d09514f55ac2056abd04137a8fd942db3a246a3ecd2bc7cae0bbb0eab",
+          "state": "uploaded"
+        },
+        {
+          "id": 645924637,
+          "name": "RPG-Lab-Spatio-Temporal-SCUC-figshare-v2.zip",
+          "size": 1152197046,
+          "digest": "sha256:3fbfa3421e9e330278d954e0fb137b204693b8675230de87e2205e0db1b6d622",
+          "state": "uploaded"
+        },
+        {
+          "id": 645924638,
+          "name": "ATTRIBUTION.md",
+          "size": 1866,
+          "digest": "sha256:e0fc042f4416cee0f5e1f6d72101e14b2c75434a00c14e8e3e25289e1b0d8693",
+          "state": "uploaded"
+        },
+        {
+          "id": 645924639,
+          "name": "source_manifest.json",
+          "size": 4181,
+          "digest": "sha256:1a6d9784e3e3259c2539aff6fd7e2d4e564b7aff9f7ed22745ac920acc8138a8",
+          "state": "uploaded"
+        }
+      ]
+    },
+    {
+      "id": 413959969,
+      "tag": "official-data-2026-10-15-batch04",
+      "draft": false,
+      "assets": [
+        {
+          "id": 644259560,
+          "name": "RTS-GMLC-v0.2.3.zip",
+          "size": 84452206,
+          "digest": "sha256:eb1086cc0f12f92c1a5de3f431784b324eb5bfdfdb8d8223f4c6e301bd15673e",
+          "state": "uploaded"
+        },
+        {
+          "id": 644259573,
+          "name": "Tejada-UC-data-1b417ece.zip",
+          "size": 4613427,
+          "digest": "sha256:546948401861b3f340ac8bd9ff03eb7a9f256acac7885321c905de6f72f1e469",
+          "state": "uploaded"
+        },
+        {
+          "id": 644259574,
+          "name": "Monash-capacity-expansion-UC-v2.zip",
+          "size": 1631015,
+          "digest": "sha256:e9309c5713ea53f4d133d248d3d4238619c18cb22db7ccab5be07b7d3fab45d0",
+          "state": "uploaded"
+        },
+        {
+          "id": 644259582,
+          "name": "Stochastic-UC-solar-h7cnt32kys-v1.zip",
+          "size": 39444519,
+          "digest": "sha256:272709692acea880b538bc62da79c0c168d5ec1ed816ce5dcd2cab9b3551fae8",
+          "state": "uploaded"
+        },
+        {
+          "id": 644259594,
+          "name": "ATTRIBUTION.md",
+          "size": 3184,
+          "digest": "sha256:1c2000bb909fecbc6007659034df5d2377313b5fb2fcacd0b41ba1eef7b6411e",
+          "state": "uploaded"
+        },
+        {
+          "id": 644259660,
+          "name": "source_manifest.json",
+          "size": 9158,
+          "digest": "sha256:a52050b91c96b7af262f7d8eb4eceddc94e578606c60bfca8cfcddacf102fa03",
+          "state": "uploaded"
+        },
+        {
+          "id": 644259661,
+          "name": "collection_receipt.json",
+          "size": 14775,
+          "digest": "sha256:5c9475a7efffafdde71c4c4cec57d1489fb2e646ac6e2734998b8d648fb6f4f9",
+          "state": "uploaded"
+        }
+      ]
+    }
+  ],
+  "baseline_releases_at_audit": [
+    {
+      "id": 415584822,
+      "tag": "official-data-2026-10-17-batch07",
+      "draft": false,
+      "assets": [
+        {
+          "id": 649546903,
+          "name": "Comillas-openSDUC-951369aa.zip",
+          "size": 439164,
+          "digest": "sha256:5f4cbf4d41d598e907f59b118f470d5e3b49e4566fd3328d7cd15c2b0fb32d8d",
+          "state": "uploaded"
+        },
+        {
+          "id": 649546907,
+          "name": "source_manifest.json",
+          "size": 6015,
+          "digest": "sha256:aab80fc61dbe3d49e40da0c22b360fdb18cb24b9bd3321a673802376690b4619",
+          "state": "uploaded"
+        },
+        {
+          "id": 649546908,
+          "name": "collection_receipt.json",
+          "size": 7568,
+          "digest": "sha256:d5871627f4c69a0eaa6b385e209a3f433a2327857783395d6e5759a44ac06bb1",
+          "state": "uploaded"
+        },
+        {
+          "id": 649546910,
+          "name": "ATTRIBUTION.md",
+          "size": 2143,
+          "digest": "sha256:bcaf1f79f9861508ee2b75a69aac83d12962fb039cd25936f27bae8eaaa43ee2",
+          "state": "uploaded"
+        },
+        {
+          "id": 649546915,
+          "name": "OPTIT-CHP-CHCP-UC-2024.zip",
+          "size": 455222,
+          "digest": "sha256:08e4e32499d9d920980a33778c09a37efd571ac7d7dd668be5122617f4285ef1",
+          "state": "uploaded"
+        }
+      ]
+    },
+    {
+      "id": 414498647,
+      "tag": "official-data-2026-10-16-batch06",
+      "draft": false,
+      "assets": [
+        {
+          "id": 645978730,
+          "name": "collection_receipt.json",
+          "size": 9257,
+          "digest": "sha256:f783cb21c078a637e0d9a51c49ed73f005a3c5c4b0325a5aa6e6688c0a340c72",
+          "state": "uploaded"
+        },
+        {
+          "id": 645978732,
+          "name": "ATTRIBUTION.md",
+          "size": 2989,
+          "digest": "sha256:06e4a1854e18b0fffc063c691acad360da39706ff4fb34d06d673b701af4c6a7",
+          "state": "uploaded"
+        },
+        {
+          "id": 645978734,
+          "name": "TU-Graz-LEGO-eb0cb5d4.zip",
+          "size": 60778171,
+          "digest": "sha256:c4363bf5da2464f3472052cc0073d51294e5633d8042a4031b39ef5bf7dc4875",
+          "state": "uploaded"
+        },
+        {
+          "id": 645978738,
+          "name": "JRC-Dispa-SET-EnVarClim-inputs-v1.zip",
+          "size": 151002846,
+          "digest": "sha256:26e36e8a62258548516ee19690f69cefb9ef11dfdeed831f8261866d09a556ec",
+          "state": "uploaded"
+        },
+        {
+          "id": 645978739,
+          "name": "Dispa-SET-sector-coupling-zenodo-v1.7z",
+          "size": 18326639,
+          "digest": "sha256:d71638e21bf27b9cdb77918dc52ddd9761f268e2923e6790b578f2a5a527355e",
+          "state": "uploaded"
+        },
+        {
+          "id": 645978755,
+          "name": "source_manifest.json",
+          "size": 7267,
+          "digest": "sha256:570a4a783dddc72b86459a25aa1fe1b2aec0cb0d135dde25b9242fda3c9fe63f",
+          "state": "uploaded"
+        }
+      ]
+    },
+    {
+      "id": 414483487,
+      "tag": "official-data-2026-10-16-batch05",
+      "draft": false,
+      "assets": [
+        {
+          "id": 645924631,
+          "name": "collection_receipt.json",
+          "size": 9921,
+          "digest": "sha256:f2647eb4f3546b233094d8c06cb5bf70cf5f1ddf27e079a0b0b603dfbbd4bfd2",
+          "state": "uploaded"
+        },
+        {
+          "id": 645924634,
+          "name": "HUST-hydropower-UC-PMC5996229-supplement.zip",
+          "size": 1016404,
+          "digest": "sha256:1690957d09514f55ac2056abd04137a8fd942db3a246a3ecd2bc7cae0bbb0eab",
+          "state": "uploaded"
+        },
+        {
+          "id": 645924637,
+          "name": "RPG-Lab-Spatio-Temporal-SCUC-figshare-v2.zip",
+          "size": 1152197046,
+          "digest": "sha256:3fbfa3421e9e330278d954e0fb137b204693b8675230de87e2205e0db1b6d622",
+          "state": "uploaded"
+        },
+        {
+          "id": 645924638,
+          "name": "ATTRIBUTION.md",
+          "size": 1866,
+          "digest": "sha256:e0fc042f4416cee0f5e1f6d72101e14b2c75434a00c14e8e3e25289e1b0d8693",
+          "state": "uploaded"
+        },
+        {
+          "id": 645924639,
+          "name": "source_manifest.json",
+          "size": 4181,
+          "digest": "sha256:1a6d9784e3e3259c2539aff6fd7e2d4e564b7aff9f7ed22745ac920acc8138a8",
+          "state": "uploaded"
+        }
+      ]
+    },
+    {
+      "id": 413959969,
+      "tag": "official-data-2026-10-15-batch04",
+      "draft": false,
+      "assets": [
+        {
+          "id": 644259560,
+          "name": "RTS-GMLC-v0.2.3.zip",
+          "size": 84452206,
+          "digest": "sha256:eb1086cc0f12f92c1a5de3f431784b324eb5bfdfdb8d8223f4c6e301bd15673e",
+          "state": "uploaded"
+        },
+        {
+          "id": 644259573,
+          "name": "Tejada-UC-data-1b417ece.zip",
+          "size": 4613427,
+          "digest": "sha256:546948401861b3f340ac8bd9ff03eb7a9f256acac7885321c905de6f72f1e469",
+          "state": "uploaded"
+        },
+        {
+          "id": 644259574,
+          "name": "Monash-capacity-expansion-UC-v2.zip",
+          "size": 1631015,
+          "digest": "sha256:e9309c5713ea53f4d133d248d3d4238619c18cb22db7ccab5be07b7d3fab45d0",
+          "state": "uploaded"
+        },
+        {
+          "id": 644259582,
+          "name": "Stochastic-UC-solar-h7cnt32kys-v1.zip",
+          "size": 39444519,
+          "digest": "sha256:272709692acea880b538bc62da79c0c168d5ec1ed816ce5dcd2cab9b3551fae8",
+          "state": "uploaded"
+        },
+        {
+          "id": 644259594,
+          "name": "ATTRIBUTION.md",
+          "size": 3184,
+          "digest": "sha256:1c2000bb909fecbc6007659034df5d2377313b5fb2fcacd0b41ba1eef7b6411e",
+          "state": "uploaded"
+        },
+        {
+          "id": 644259660,
+          "name": "source_manifest.json",
+          "size": 9158,
+          "digest": "sha256:a52050b91c96b7af262f7d8eb4eceddc94e578606c60bfca8cfcddacf102fa03",
+          "state": "uploaded"
+        },
+        {
+          "id": 644259661,
+          "name": "collection_receipt.json",
+          "size": 14775,
+          "digest": "sha256:5c9475a7efffafdde71c4c4cec57d1489fb2e646ac6e2734998b8d648fb6f4f9",
+          "state": "uploaded"
+        }
+      ]
+    }
+  ],
+  "new_releases_observed": [
+    "official-data-2026-10-18-batch08"
+  ],
+  "writes_to_original_repository": 0,
+  "policy": "Standardized data, code and management documents published only to UC_database_sta. Existing uploaded originals and assets remain unchanged."
+}

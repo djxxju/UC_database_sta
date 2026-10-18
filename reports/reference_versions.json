@@ -1,0 +1,18 @@
+{
+  "retrieved_at_utc": "2026-10-18T03:02:41.441968+00:00",
+  "target_note": {
+    "url": "https://notes.sjtu.edu.cn/s/zzB-Iq_eRD",
+    "last_modified_as_reported": "Sat Oct 17 2026 05:28:16 GMT+0000 (Coordinated Universal Time)",
+    "decoded_note_sha256": "e2eb83171e3390ae635975face245ae92fe7de76b42e0a689820c970d7868759",
+    "full_text_redistributed": false
+  },
+  "source_reader": {
+    "url": "https://github.com/ANL-CEEESA/UnitCommitment.jl/blob/e4cc95dae16d9b8bccbfcd95ccf754b307d66c4a/src/instance/read.jl",
+    "startup_shutdown_default_mw": 1000000,
+    "time_step_default_min": 60,
+    "power_balance_penalty_default": 1000,
+    "legacy_time_h_field_supported": true
+  },
+  "source_model_import_tested": false,
+  "target_model_import_tested": false
+}

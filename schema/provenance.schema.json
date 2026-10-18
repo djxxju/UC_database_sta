@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Derived pilot provenance 0.1.0",
+  "type": "object",
+  "required": [
+    "case_id",
+    "profile_version",
+    "classification",
+    "source_files",
+    "unit_mapping",
+    "field_mapping",
+    "assumptions",
+    "model_differences",
+    "cost_conversion",
+    "converter",
+    "output_sha256",
+    "status"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "profile_version": {
+      "const": "sjtu-hourly-uc/0.1.0"
+    },
+    "classification": {
+      "const": "derived_model_changed"
+    },
+    "source_files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256",
+          "official_url",
+          "collected_at_utc"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "official_url": {
+            "type": "string"
+          },
+          "collected_at_utc": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "unit_mapping": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "array_index",
+          "source_unit_id"
+        ],
+        "properties": {
+          "array_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "source_unit_id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "field_mapping": {
+      "type": "object"
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "model_differences": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "cost_conversion": {
+      "type": "array",
+      "minItems": 1
+    },
+    "converter": {
+      "type": "object",
+      "required": [
+        "version",
+        "sha256",
+        "profile_reference"
+      ]
+    },
+    "output_sha256": {
+      "type": "object",
+      "required": [
+        "units.json",
+        "stochastic.json"
+      ]
+    },
+    "status": {
+      "type": "object",
+      "required": [
+        "solve_status"
+      ],
+      "properties": {
+        "solve_status": {
+          "const": "not_run"
+        }
+      }
+    }
+  }
+}

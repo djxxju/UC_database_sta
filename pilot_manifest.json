@@ -1,0 +1,22 @@
+{
+  "profile": "sjtu-hourly-uc/0.1.0",
+  "conversion_status": "derived_model_changed",
+  "cases": [
+    {
+      "case_id": "orlib_10_0_4_w_quad_v1",
+      "source_case": "or-lib/10_0_4_w",
+      "path": "sources/or-lib/10_0_4_w.json.gz",
+      "sha256": "287eb64692a84dbcd00de64fc2c6e3c2e39273d2a1ec1579e7c638e84c59631c",
+      "official_url": "https://axavier.org/UnitCommitment.jl/0.4/instances/or-lib/10_0_4_w.json.gz",
+      "collected_at_utc": "2026-10-15T10:57:35.937579+00:00"
+    },
+    {
+      "case_id": "orlib_20_0_1_w_quad_v1",
+      "source_case": "or-lib/20_0_1_w",
+      "path": "sources/or-lib/20_0_1_w.json.gz",
+      "sha256": "6a567e0c8ebe5b2420d940f7526f343850fd45c6400e09ef1247cb450a6551be",
+      "official_url": "https://axavier.org/UnitCommitment.jl/0.4/instances/or-lib/20_0_1_w.json.gz",
+      "collected_at_utc": "2026-10-15T10:57:46.612140+00:00"
+    }
+  ]
+}
