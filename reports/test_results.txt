@@ -4,3 +4,4 @@ Python 3.13; jsonschema 4.23.0
 10 source candidates screened; 2 selected. Necessary-condition screening is not a feasibility proof.
 python -m unittest discover -s tests -v: 18 tests passed after final newline fix.
 No solver calls. Target program import not tested.
+GitHub Actions 39092463305: success at commit f613c54fc73fe4fd4155c494284e39745d5c516a; cloud rebuild matches committed outputs.

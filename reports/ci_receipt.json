@@ -1,0 +1,19 @@
+{
+  "checked_date": "2026-10-18",
+  "repository": "djxxju/UC_database_sta",
+  "tested_commit": "f613c54fc73fe4fd4155c494284e39745d5c516a",
+  "run_id": 39092463305,
+  "run_url": "https://github.com/djxxju/UC_database_sta/actions/runs/39092463305",
+  "status": "completed",
+  "conclusion": "success",
+  "job_id": 117571899850,
+  "checks": [
+    "Rebuild both cases from hash-pinned original gzip copies",
+    "JSON Schema Draft 2020-12 and cross-field checks",
+    "Source/output SHA-256 checks",
+    "18 unit regression tests",
+    "git diff --exit-code on reproduced cases, catalog and validation report"
+  ],
+  "solver_invoked": false,
+  "local_publication_verified_files": 37
+}
